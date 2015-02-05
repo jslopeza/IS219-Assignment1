@@ -1,0 +1,24 @@
+{
+  "name": "is219_assignment_1",
+  "version": "1.0.0",
+  "description": "IS219 class project to log user-agent req to a csv file",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binoy14/IS219-Assignment1.git"
+  },
+  "keywords": [
+    "csv",
+    "loging",
+    "request"
+  ],
+  "author": "Binoy Patel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binoy14/IS219-Assignment1/issues"
+  },
+  "homepage": "https://github.com/binoy14/IS219-Assignment1"
+}
