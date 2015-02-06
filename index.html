@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Request</title>
+    <meta charset="utf-8" />
+
+    <style>
+    .loading-splash {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #45AEB1;
+        z-index: 999;
+        transition: opacity .2s .75s ease-in-out;
+    }
+    .loading-splash.loaded {
+        opacity: 0;
+    }
+    .container-umbel-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .umbel-logo {
+        width: 60px;
+        height: 90px;
+        fill: #fff;
+    }
+    .umbel-logo .dot.animated {
+        -webkit-animation: hop .3s ease-in alternate 2;
+        transform-origin: center center;
+    }
+    .umbel-logo .dot-second.animated {
+        -webkit-animation-delay: .15s;
+    }
+    .umbel-logo .dot-third.animated {
+        -webkit-animation-delay: .3s;
+    }
+    .umbel-logo .u.animated {
+        -webkit-animation: duck .5s ease-in-out 2 alternate;
+        transform-origin: center center;
+    }
+    .loading-text {
+        margin-top: 0;
+        color: #fff;
+        font-family: 'proxima-nova-2', Arial, sans-serif;
+    }
+    .loading-text .letter {
+        display: inline-block;
+        transition: transform .5s linear, opacity .5s linear;
+        opacity: 0;
+        transform: rotate3d(.1, 1, 0, 90deg) translate3d(0, 15%, 0);
+    }
+    .loading-text .letter.visible {
+        opacity: 1;
+        transform: rotate3d(0, 0, 0, 90deg) translate3d(0, 0, 0);
+    }
+    @-webkit-keyframes hop {
+        0% {
+            transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+        }
+        100% {
+            transform: scale3d(1.2, 1.2, 1) translate3d(0, -80%, 0);
+        }
+    }
+    @-webkit-keyframes duck {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 10%, 0);
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-splash">
+        <div class="container-umbel-logo">
+            <svg class="umbel-logo" viewBox="0 0 512 512">
+                <path class="dot dot-second animated" d="M300.75,44.667c0,24.708-20.042,44.729-44.708,44.729c-24.75,0-44.709-20.021-44.709-44.729  C211.333,20,231.292,0,256.042,0C280.708,0,300.75,20,300.75,44.667z" />
+                <path class="dot dot-third animated" d="M423.333,125.271c0,24.709-20,44.709-44.708,44.709s-44.667-20-44.667-44.709  c0-24.708,19.959-44.708,44.667-44.708S423.333,100.562,423.333,125.271z" />
+                <path class="dot dot-first animated" d="M178.083,125.271c0,24.709-20,44.709-44.708,44.709c-24.667,0-44.708-20-44.708-44.709  c0-24.708,20.041-44.708,44.708-44.708C158.083,80.562,178.083,100.562,178.083,125.271z" />
+                <path class="u animated" d="M256.042,512c-87.167,0-158.167-70.875-158.167-158.083V244.604c0-18.042,14.688-32.771,32.812-32.771  c18.083,0,32.771,14.729,32.771,32.771v109.312c0,51.041,41.562,92.583,92.584,92.583c51.041,0,92.541-41.542,92.541-92.583V244.604  c0-18.042,14.667-32.771,32.75-32.771c18.167,0,32.792,14.729,32.792,32.771v109.312C414.083,441.125,343.167,512,256.042,512  L256.042,512z" />
+                <path class="dash" d="M256,387.667c-18.083,0-32.729-14.667-32.729-32.75V166.438c0-18.083,14.646-32.771,32.729-32.771  c18.125,0,32.75,14.688,32.75,32.771v188.479C288.75,373,274.125,387.667,256,387.667L256,387.667z" />
+            </svg>
+            <h2 class="loading-text">
+            <span class="letter">R</span>
+            <span class="letter">E</span>
+            <span class="letter">Q</span>
+            <span class="letter">U</span>
+            <span class="letter">E</span>
+            <span class="letter">S</span>
+            <span class="letter">T</span>
+            <span class="letter"> &nbsp;</span>
+            <span class="letter">R</span>
+            <span class="letter">E</span>
+            <span class="letter">C</span>
+            <span class="letter">E</span>
+            <span class="letter">I</span>
+            <span class="letter">V</span>
+            <span class="letter">E</span>
+            <span class="letter">D</span>
+        </h2>
+        </div>
+    </div>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    + function() {
+        var intervals = []
+
+        intervals.push(setInterval(function() {
+            $('.umbel-logo .animated').each(function() {
+                this.classList.remove('animated')
+                this.offsetHeight
+                this.classList.add('animated')
+            })
+        }, 2000))
+
+
+        var appearPhase = true;
+        var $text = $('.loading-text')
+
+        var togglePhase = function() {
+            appearPhase = !appearPhase
+        }
+
+        intervals.push(setInterval(function() {
+            var selector = appearPhase ? '.letter:not(.visible)' : '.letter.visible'
+            var $letters = $text.find(selector)
+
+            $letters
+                .eq(~~(Math.random() * $letters.length))
+                .toggleClass('visible', appearPhase)
+
+            $letters.length - 1 || setTimeout(togglePhase, 2000)
+        }, 300))
+
+        function destroy() {
+            $('.loading-splash').remove()
+            intervals.forEach(function(interval) {
+                clearInterval(interval)
+            })
+        }
+
+        $(window).on('loadComplete.um', destroy)
+    }()
+    </script>
+</body>
+
+</html>
